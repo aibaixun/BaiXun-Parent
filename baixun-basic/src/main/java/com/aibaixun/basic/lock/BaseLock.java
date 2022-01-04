@@ -7,7 +7,7 @@ package com.aibaixun.basic.lock;
  */
 public abstract class BaseLock implements Lock {
 
-    protected static final String LOCK_PREFIX = "bx-lock";
+    protected static final String LOCK_PREFIX = "bx-lock:";
 
 
     @Override

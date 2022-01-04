@@ -1,6 +1,7 @@
 package com.aibaixun.common.redis.util;
 
 
+import com.aibaixun.common.redis.config.KeyStringRedisSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.RedisClusterNode;
@@ -24,21 +25,23 @@ import java.util.*;
  * @date 2022/1/1
  */
 public class RedisRepository {
+
+
+
     
     private final Logger logger = LoggerFactory.getLogger(RedisRepository.class);
 
     private final RedisTemplate<String, Object> redisTemplate;
     
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-    
-    private static final StringRedisSerializer STRING_SERIALIZER = new StringRedisSerializer();
-    
+
     private static final JdkSerializationRedisSerializer OBJECT_SERIALIZER = new JdkSerializationRedisSerializer();
     
-    public RedisRepository(RedisTemplate<String, Object> redisTemplate) {
+    public RedisRepository(RedisTemplate<String, Object> redisTemplate,String keyPrefix) {
         this.redisTemplate = redisTemplate;
-        this.redisTemplate.setKeySerializer(STRING_SERIALIZER);
+        this.redisTemplate.setKeySerializer(new KeyStringRedisSerializer(keyPrefix));
         this.redisTemplate.setValueSerializer(OBJECT_SERIALIZER);
+
     }
 
    

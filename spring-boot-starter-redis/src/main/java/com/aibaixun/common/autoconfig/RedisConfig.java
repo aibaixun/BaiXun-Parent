@@ -3,6 +3,7 @@ package com.aibaixun.common.autoconfig;
 import com.aibaixun.common.redis.config.CacheManagerProperties;
 import com.aibaixun.common.redis.util.RedisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -35,6 +36,10 @@ public class RedisConfig {
     private CacheManagerProperties cacheManagerProperties;
 
 
+    @Value("${spring.application.name}")
+    private String applicationName;
+
+
     @Autowired
     public void setCacheManagerProperties(CacheManagerProperties cacheManagerProperties) {
         this.cacheManagerProperties = cacheManagerProperties;
@@ -57,7 +62,7 @@ public class RedisConfig {
     @Bean
     @ConditionalOnMissingBean
     public RedisRepository redisRepository(RedisTemplate<String, Object> redisTemplate) {
-        return new RedisRepository(redisTemplate);
+        return new RedisRepository(redisTemplate,applicationName+":");
     }
 
     @Bean(name = "cacheManager")
