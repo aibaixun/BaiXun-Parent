@@ -17,6 +17,7 @@ public class ApplicationContextHelper implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         ApplicationContextHelper.applicationContext = applicationContext;
+
     }
 
     public static <T> T getBean(Class<T> targetClz) {

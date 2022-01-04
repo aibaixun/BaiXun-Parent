@@ -5,7 +5,7 @@
     <groupId>com.aibaixun</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <modules>
         <module>baixun-basic</module>
         <module>spring-boot-starter</module>
@@ -114,6 +114,26 @@
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aibaixun</groupId>
+                <artifactId>spring-boot-starter-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aibaixun</groupId>
+                <artifactId>spring-boot-starter-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aibaixun</groupId>
+                <artifactId>spring-boot-starter-rpc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aibaixun</groupId>
+                <artifactId>spring-boot-starter-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!--百讯  end!!-->

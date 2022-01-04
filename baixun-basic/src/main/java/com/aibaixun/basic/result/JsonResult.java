@@ -113,32 +113,6 @@ public final class JsonResult<T> implements Serializable {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        JsonResult<?> that = (JsonResult<?>) o;
-        if (!errorCode.equals(that.errorCode)) {
-            return false;
-        }
-        if (!data.equals(that.data)) {
-            return false;
-        }
-        return msg.equals(that.msg);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = errorCode.hashCode();
-        result = 31 * result + data.hashCode();
-        result = 31 * result + msg.hashCode();
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "{" +
                 "errorCode=" + errorCode +

@@ -34,7 +34,6 @@ import java.util.List;
 @EnableConfigurationProperties(MybatisPlusAutoConfigProperties.class)
 public class MybatisPlusAutoConfigure {
 
-
     private MybatisPlusAutoConfigProperties properties;
 
     private TenantProperties tenantProperties;
