@@ -22,7 +22,7 @@ public class SwaggerProperties {
     @Value("${spring.application.name}")
     private String applicationName;
 
-    private Boolean enabled;
+    private Boolean enable;
 
     private String title;
 
@@ -43,11 +43,11 @@ public class SwaggerProperties {
     }
 
     public Boolean getEnabled() {
-        return enabled;
+        return enable;
     }
 
     public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+        this.enable = enabled;
     }
 
     public String getTitle() {
