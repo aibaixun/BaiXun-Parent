@@ -38,6 +38,7 @@
         <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
         <swagger.version>3.0.0</swagger.version>
         <beanutil-version>1.8.3</beanutil-version>
+        <easyexcel.version>3.0.5</easyexcel.version>
     </properties>
 
     <dependencyManagement>
@@ -121,8 +122,11 @@
                 <artifactId>commons-beanutils</artifactId>
                 <version>${beanutil-version}</version>
             </dependency>
-
-
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
