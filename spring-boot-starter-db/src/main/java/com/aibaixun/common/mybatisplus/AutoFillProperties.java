@@ -10,7 +10,7 @@ public class AutoFillProperties {
     /**
      * 是否开启自动填充字段
      */
-    private Boolean enabled = true;
+    private Boolean enable = true;
     /**
      * 是否开启了插入填充
      */
@@ -29,12 +29,12 @@ public class AutoFillProperties {
     private String updateTimeField = "updateTime";
 
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getEnable() {
+        return enable;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     public Boolean getEnableInsertFill() {
