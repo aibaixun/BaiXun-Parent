@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.aibaixun.common.autoconfig.FeignAutoConfigure,\
+com.aibaixun.common.autoconfig.RestTemplateAutoConfigure
