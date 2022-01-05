@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author wangxiao@aibaixun.com
  * @date 2021/12/30
  */
-@Configuration
+
 @ConfigurationProperties(prefix = "bx.mybatis-plus")
 public class MybatisPlusAutoConfigProperties {
 
