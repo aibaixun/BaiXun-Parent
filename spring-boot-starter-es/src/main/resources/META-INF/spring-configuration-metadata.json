@@ -7,27 +7,32 @@
   {
     "name": "bx.elasticsearch.rest-pool.connectTimeOut",
     "type": "java.lang.Integer",
-    "description": "Link establishment timeout. (Default 1000)"
+    "description": "Link establishment timeout.",
+    "defaultValue": 1000
   },
   {
     "name": "bx.elasticsearch.rest-pool.socketTimeOut",
     "type": "java.lang.Integer",
-    "description": "Waiting for data timeout. (Default 30000)"
+    "description": "Waiting for data timeout.",
+    "defaultValue": 30000
   },
   {
     "name": "bx.elasticsearch.rest-pool.connectionRequestTimeOut",
     "type": "java.lang.Integer",
-    "description": "The timeout period for the connection pool to obtain a connection. (Default 500)"
+    "description": "The timeout period for the connection pool to obtain a connection.",
+    "defaultValue": 500
   },
   {
     "name": "bx.elasticsearch.rest-pool.maxConnectNum",
     "type": "java.lang.Integer",
-    "description": "Maximum number of connections. (Default 30)"
+    "description": "Maximum number of connections.",
+    "defaultValue": 30
   },
   {
     "name": "bx.elasticsearch.rest-pool.maxConnectPerRoute",
     "type": "java.lang.Integer",
-    "description": "Whether to enable auto-fill fields. (Default 10)"
+    "description": "Whether to enable auto-fill fields.",
+    "defaultValue": 10
   }
 ],"hints": [
 ]}

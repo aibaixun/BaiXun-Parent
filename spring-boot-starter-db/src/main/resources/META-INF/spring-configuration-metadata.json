@@ -7,7 +7,8 @@
   {
     "name": "bx.mybatis-plus.tenant.enable",
     "type": "java.lang.Boolean",
-    "description": "Whether to enable multi-tenancy. (Default ture)"
+    "description": "Whether to enable multi-tenancy.",
+    "defaultValue": true
   },
   {
     "name": "bx.mybatis-plus.tenant.ignoreTables",
@@ -22,27 +23,32 @@
   {
     "name": "bx.mybatis-plus.fill.enable",
     "type": "java.lang.Boolean",
-    "description": "Whether to enable auto-fill fields. (Default ture)"
+    "description": "Whether to enable auto-fill fields.",
+    "defaultValue": true
   },
   {
     "name": "bx.mybatis-plus.fill.enableInsertFill",
     "type": "java.lang.Boolean",
-    "description": "Whether insert padding is turned on. (Default ture)"
+    "description": "Whether insert padding is turned on.",
+    "defaultValue": true
   },
   {
     "name": "bx.mybatis-plus.fill.enableUpdateFill",
     "type": "java.lang.Boolean",
-    "description": "Whether update fill is turned on. (Default ture)"
+    "description": "Whether update fill is turned on.",
+    "defaultValue": true
   },
   {
     "name": "bx.mybatis-plus.fill.createTimeField",
     "type": "java.lang.String",
-    "description": "Creation time field name. (Default createTime)"
+    "description": "Creation time field name.",
+    "defaultValue": "createTime"
   },
   {
     "name": "bx.mybatis-plus.fill.updateTimeField",
     "type": "java.lang.String",
-    "description": "Update time field name. (Default updateTime)"
+    "description": "Update time field name.",
+    "defaultValue": "updateTime"
   },
   {
     "name": "bx.mybatis-plus.dbType",
