@@ -62,7 +62,7 @@ public class RedisConfig {
     @Bean
     @ConditionalOnMissingBean
     public RedisRepository redisRepository(RedisTemplate<String, Object> redisTemplate) {
-        return new RedisRepository(redisTemplate,applicationName+":");
+        return new RedisRepository(redisTemplate);
     }
 
     @Bean(name = "cacheManager")
