@@ -1,0 +1,32 @@
+{"groups": [
+  {
+    "name": "bx.rest-template",
+    "type": "com.aibaixun.common.config.RestTemplateProperties"
+  }
+],"properties": [
+  {
+    "name": "bx.rest-template.maxTotal",
+    "type": "java.lang.Integer",
+    "description": "Maximum number of links.",
+    "defaultValue": 200
+  },
+  {
+    "name": "bx.rest-template.maxPerRoute",
+    "type": "java.lang.Integer",
+    "description": "Maximum concurrent number of the same route.",
+    "defaultValue": 50
+  },
+  {
+    "name": "bx.rest-template.readTimeout",
+    "type": "java.lang.Integer",
+    "description": "Read timeout ms.",
+    "defaultValue": 35000
+  },
+  {
+    "name": "bx.rest-template.connectTimeout",
+    "type": "java.lang.Integer",
+    "description": "Link timeout ms.",
+    "defaultValue": 10000
+  }
+],"hints": [
+]}

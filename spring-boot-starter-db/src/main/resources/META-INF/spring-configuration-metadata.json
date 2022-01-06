@@ -1,0 +1,170 @@
+{"groups": [
+  {
+    "name": "bx",
+    "type": "com.aibaixun.common.mybatisplus.MybatisPlusAutoConfigProperties"
+  }
+],"properties": [
+  {
+    "name": "bx.mybatis-plus.tenant.enable",
+    "type": "java.lang.Boolean",
+    "description": "Whether to enable multi-tenancy. (Default ture)"
+  },
+  {
+    "name": "bx.mybatis-plus.tenant.ignoreTables",
+    "type": "java.util.List",
+    "description": "Table name without multi-tenant isolation"
+  },
+  {
+    "name": "bx.mybatis-plus.tenant.ignoreMapperStatement",
+    "type": "java.util.List",
+    "description": "SQL without multi-tenant isolation"
+  },
+  {
+    "name": "bx.mybatis-plus.fill.enable",
+    "type": "java.lang.Boolean",
+    "description": "Whether to enable auto-fill fields. (Default ture)"
+  },
+  {
+    "name": "bx.mybatis-plus.fill.enableInsertFill",
+    "type": "java.lang.Boolean",
+    "description": "Whether insert padding is turned on. (Default ture)"
+  },
+  {
+    "name": "bx.mybatis-plus.fill.enableUpdateFill",
+    "type": "java.lang.Boolean",
+    "description": "Whether update fill is turned on. (Default ture)"
+  },
+  {
+    "name": "bx.mybatis-plus.fill.createTimeField",
+    "type": "java.lang.String",
+    "description": "Creation time field name. (Default createTime)"
+  },
+  {
+    "name": "bx.mybatis-plus.fill.updateTimeField",
+    "type": "java.lang.String",
+    "description": "Update time field name. (Default updateTime)"
+  },
+  {
+    "name": "bx.mybatis-plus.dbType",
+    "type": "com.baomidou.mybatisplus.annotation.DbType",
+    "description": "Database Type"
+  }
+],"hints": [
+  {
+    "name": "bx.mybatis-plus.dbType",
+    "values": [
+      {
+        "value": "MYSQL",
+        "description": "MySql Database"
+      },
+      {
+        "value": "MARIADB",
+        "description": "MARIADB Database"
+      },
+      {
+        "value": "ORACLE",
+        "description": "ORACLE Database"
+      },
+      {
+        "value": "ORACLE_12C",
+        "description": "ORACLE_12C Database"
+      },
+      {
+        "value": "DB2",
+        "description": "DB2 Database"
+      },
+      {
+        "value": "H2",
+        "description": "H2 Database"
+      },
+      {
+        "value": "HSQL",
+        "description": "HSQL Database"
+      },
+      {
+        "value": "SQLITE",
+        "description": "SQLITE Database"
+      },
+      {
+        "value": "POSTGRE_SQL",
+        "description": "POSTGRE_SQL Database"
+      },
+      {
+        "value": "SQL_SERVER2005",
+        "description": "SQL_SERVER2005 Database"
+      },
+      {
+        "value": "SQL_SERVER",
+        "description": "SQL_SERVER Database"
+      },
+      {
+        "value": "DM",
+        "description": "DM Database"
+      },
+      {
+        "value": "XU_GU",
+        "description": "XU_GU Database"
+      },
+      {
+        "value": "KINGBASE_ES",
+        "description": "KINGBASE_ES Database"
+      },
+      {
+        "value": "PHOENIX",
+        "description": "PHOENIX Database"
+      },
+      {
+        "value": "GAUSS",
+        "description": "GAUSS Database"
+      },
+      {
+        "value": "CLICK_HOUSE",
+        "description": "CLICK_HOUSE Database"
+      },
+      {
+        "value": "GBASE",
+        "description": "GBASE Database"
+      },
+      {
+        "value": "GBASEDBT",
+        "description": "GBASEDBT Database"
+      },
+      {
+        "value": "OSCAR",
+        "description": "OSCAR Database"
+      },
+      {
+        "value": "SYBASE",
+        "description": "SYBASE Database"
+      },
+      {
+        "value": "OCEAN_BASE",
+        "description": "OCEAN_BASE Database"
+      },
+      {
+        "value": "FIREBIRD",
+        "description": "FIREBIRD Database"
+      },
+      {
+        "value": "HIGH_GO",
+        "description": "HIGH_GO Database"
+      },
+      {
+        "value": "CUBRID",
+        "description": "CUBRID Database"
+      },
+      {
+        "value": "GOLDILOCKS",
+        "description": "GOLDILOCKS Database"
+      },
+      {
+        "value": "CSIIDB",
+        "description": "CSIIDB Database"
+      },
+      {
+        "value": "OTHER",
+        "description": "OTHER Database"
+      }
+    ]
+  }
+]}

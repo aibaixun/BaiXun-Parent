@@ -1,0 +1,13 @@
+{"groups": [
+  {
+    "name": "bx.cache",
+    "type": "com.aibaixun.common.redis.config.CacheManagerProperties"
+  }
+],"properties": [
+  {
+    "name": "bx.cache.cacheManages",
+    "type": "java.util.List<com.aibaixun.common.redis.config.CacheManagerProperties.CacheConfig>",
+    "description": "Database index used by the connection factory."
+  }
+],"hints": [
+]}

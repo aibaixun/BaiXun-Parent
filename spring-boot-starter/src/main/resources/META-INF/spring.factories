@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.aibaixun.common.autoconfig.ApplicationContextAutoConfiguration
+com.aibaixun.common.autoconfig.ApplicationContextAutoConfiguration,\
+com.aibaixun.common.autoconfig.AsyncConfig

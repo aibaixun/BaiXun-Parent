@@ -1,0 +1,43 @@
+{"groups": [
+  {
+    "name": "bx.swagger",
+    "type": "com.aibaixun.common.SwaggerProperties"
+  }
+],"properties": [
+  {
+    "name": "bx.swagger.applicationName",
+    "type": "java.lang.String",
+    "description": "Application name."
+  },
+  {
+    "name": "bx.swagger.enable",
+    "type": "java.lang.Boolean",
+    "description": "Swagger enable."
+  },
+  {
+    "name": "bx.swagger.title",
+    "type": "java.lang.String",
+    "description": "Swagger Title."
+  },
+  {
+    "name": "bx.swagger.description",
+    "type": "java.lang.String",
+    "description": "Swagger description."
+  },
+  {
+    "name": "bx.swagger.version",
+    "type": "java.lang.String",
+    "description": "Swagger version."
+  },
+  {
+    "name": "bx.swagger.basePackage",
+    "type": "java.lang.String",
+    "description": "Swagger basePackage."
+  },
+  {
+    "name": "bx.swagger.path",
+    "type": "java.lang.String",
+    "description": "Swagger path."
+  }
+],"hints": [
+]}
