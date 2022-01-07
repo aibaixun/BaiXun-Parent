@@ -3,7 +3,6 @@ package com.aibaixun.common.autoconfig;
 import com.aibaixun.common.redis.Constants;
 import com.aibaixun.common.redis.config.CacheManagerProperties;
 import com.aibaixun.common.redis.util.RedisRepository;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -23,9 +22,6 @@ import org.springframework.data.redis.serializer.*;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.aibaixun.common.redis.Constants.OBJECT_SERIALIZER;
-import static com.aibaixun.common.redis.Constants.STRING_SERIALIZER;
 
 /**
  * @author wangxiao@aibaixun.com
@@ -49,10 +45,7 @@ public class RedisConfig  {
     }
 
     @Bean
-    @ConditionalOnMissingBean(name = {
-            "redisTemplate"
-    })
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+    public RedisTemplate<String, Object> bxRedisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(factory);
         redisTemplate.setKeySerializer(Constants.STRING_SERIALIZER);
@@ -65,8 +58,8 @@ public class RedisConfig  {
 
     @Bean
     @ConditionalOnMissingBean
-    public RedisRepository redisRepository(RedisTemplate<String, Object> redisTemplate) {
-        return new RedisRepository(redisTemplate);
+    public RedisRepository redisRepository(RedisTemplate<String, Object> bxRedisTemplate) {
+        return new RedisRepository(bxRedisTemplate);
     }
 
     @Bean(name = "cacheManager")
