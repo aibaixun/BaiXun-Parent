@@ -19,10 +19,7 @@ public enum BaseResultCode implements ResultCode {
      * 刷新token 过期
      */
     REFRESH_TOKEN_EXPIRED(2001),
-    /**
-     * 参数无效
-     */
-    INVALID_ARGUMENTS(4000),
+
     /**
      * 参数错误
      */

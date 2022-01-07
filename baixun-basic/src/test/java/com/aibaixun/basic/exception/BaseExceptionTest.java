@@ -41,7 +41,7 @@ public class BaseExceptionTest {
 
 
     public void testMoreFillInStackTrace () throws BaseException {
-        throw new BaseException(new BaseException("错误的参数",new IllegalArgumentException("参数错误1"),BaseResultCode.GENERAL_ERROR),BaseResultCode.INVALID_ARGUMENTS);
+        throw new BaseException(new BaseException("错误的参数",new IllegalArgumentException("参数错误1"),BaseResultCode.GENERAL_ERROR),BaseResultCode.BAD_PARAMS);
     }
 
 

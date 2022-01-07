@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
                 .stream()
                 .findFirst()
                 .map(ObjectError::getDefaultMessage).orElse("");
-        JsonResult<Void> jsonResult = JsonResult.failed(BaseResultCode.INVALID_ARGUMENTS,message);
+        JsonResult<Void> jsonResult = JsonResult.failed(BaseResultCode.BAD_PARAMS,message);
         LOGGER.warn("ExceptionHandlerConfiguration--validationErrorHandler,message:{}",message);
         return ResponseEntity.ok(jsonResult);
     }

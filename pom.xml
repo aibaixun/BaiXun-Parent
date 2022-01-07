@@ -39,6 +39,7 @@
         <swagger.version>3.0.0</swagger.version>
         <beanutil-version>1.8.3</beanutil-version>
         <easyexcel.version>3.0.5</easyexcel.version>
+        <bx.version>1.0.0</bx.version>
     </properties>
 
     <dependencyManagement>
@@ -99,42 +100,42 @@
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>basic</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-db</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-swagger</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-redis</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-rpc</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aibaixun</groupId>
                 <artifactId>spring-boot-starter-log</artifactId>
-                <version>${project.version}</version>
+                <version>${bx.version}</version>
             </dependency>
             <!--百讯  end!!-->
             <dependency>

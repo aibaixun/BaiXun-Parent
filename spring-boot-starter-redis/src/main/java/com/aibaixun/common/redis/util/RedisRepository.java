@@ -35,11 +35,12 @@ public class RedisRepository {
     
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
-    private static final JdkSerializationRedisSerializer OBJECT_SERIALIZER = new JdkSerializationRedisSerializer();
-    
-    public RedisRepository(RedisTemplate<String, Object> redisTemplate,String keyPrefix) {
+    private static final RedisSerializer OBJECT_SERIALIZER = new JdkSerializationRedisSerializer();
+    private static final RedisSerializer STRING_SERIALIZER = new StringRedisSerializer();
+
+    public RedisRepository(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
-        this.redisTemplate.setKeySerializer(new KeyStringRedisSerializer(keyPrefix));
+        this.redisTemplate.setKeySerializer(STRING_SERIALIZER);
         this.redisTemplate.setValueSerializer(OBJECT_SERIALIZER);
 
     }
