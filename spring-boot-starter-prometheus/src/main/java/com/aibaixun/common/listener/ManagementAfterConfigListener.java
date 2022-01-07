@@ -22,7 +22,7 @@ public class ManagementAfterConfigListener implements SmartApplicationListener, 
     @Override
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
         if (applicationEvent instanceof ApplicationEnvironmentPreparedEvent) {
-            System.setProperty("management.endpoints.web.exposure.include", "prometheus,info");
+            System.setProperty("management.endpoints.web.exposure.include", "prometheus,info,health");
             System.setProperty("management.metrics.tags.application", "${spring.application.name}");
         }
 
