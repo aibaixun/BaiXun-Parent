@@ -1,9 +1,10 @@
 package com.aibaixun.common.thread;
 
-import com.aibaixun.common.listener.IThreadPoolListener;
-import com.aibaixun.common.listener.ThreadPoolEvent;
+import com.aibaixun.common.thread.listener.ThreadPoolListener;
+import com.aibaixun.common.thread.listener.ThreadPoolEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.concurrent.*;
 public class BaseThreadPoolExecutor extends ThreadPoolExecutor {
     private static final Logger logger = LoggerFactory.getLogger(BaseThreadPoolExecutor.class);
 
-    private List<IThreadPoolListener> listeners;
+    private final List<ThreadPoolListener> listeners;
 
     public BaseThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory, handler);
@@ -32,16 +33,23 @@ public class BaseThreadPoolExecutor extends ThreadPoolExecutor {
     protected void afterExecute(Runnable runnable, Throwable throwable) {
         super.afterExecute(runnable, throwable);
         ThreadPoolEvent event = ThreadPoolEvent.instant(runnable, throwable);
+        if (logger.isDebugEnabled()){
+            logger.debug("afterExecute will be handleListener event");
+        }
+        if (CollectionUtils.isEmpty(listeners)){
+            logger.warn("BaseThreadPoolExecutor listeners is empty");
+        }
         listeners.forEach(e->e.handleEvent(event));
+
     }
 
-    public Boolean addListener(IThreadPoolListener listener){
+    public Boolean addListener(ThreadPoolListener listener){
         int size = listeners.size()+1;
         listeners.add(listener);
         return size==listeners.size();
     }
 
-    public Boolean removeListener(IThreadPoolListener listener){
+    public Boolean removeListener(ThreadPoolListener listener){
         int size = listeners.size()-1;
         int i = listeners.indexOf(listener);
         if(i>0){
