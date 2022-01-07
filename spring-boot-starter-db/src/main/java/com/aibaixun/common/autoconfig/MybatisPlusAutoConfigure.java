@@ -49,12 +49,8 @@ public class MybatisPlusAutoConfigure {
 
 
 
-    private TenantLineHandler tenantLineHandler;
 
-    @Autowired
-    public void setTenantLineHandler(TenantLineHandler tenantLineHandler) {
-        this.tenantLineHandler = tenantLineHandler;
-    }
+
 
     /**
      * 分页插件，自动识别数据库类型
@@ -64,7 +60,25 @@ public class MybatisPlusAutoConfigure {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         var tenant = properties.getTenant();
         if (null != tenant && tenant.getEnable()) {
-            interceptor.addInnerInterceptor(new BxtTenantLineInterceptor(tenantLineHandler,tenant.getIgnoreMapperStatement()));
+            interceptor.addInnerInterceptor(new BxtTenantLineInterceptor(new TenantLineHandler() {
+                @Override
+                public Expression getTenantId() {
+                    try {
+                        return new StringValue(UserContextHolder.getTenantId());
+                    } catch (BaseException e) {
+                        return new NullValue();
+                    }
+                };
+                @Override
+                public boolean ignoreTable(String tableName) {
+                    return !tenantProperties.getIgnoreTables().contains(tableName);
+                }
+
+                @Override
+                public boolean ignoreInsert(List<Column> columns, String tenantIdColumn) {
+                    return TenantLineHandler.super.ignoreInsert(columns, tenantIdColumn);
+                }
+            }, tenant.getIgnoreMapperStatement()));
         }
         if (null != properties.getDbType()){
             interceptor.addInnerInterceptor(new PaginationInnerInterceptor(properties.getDbType()));
@@ -81,31 +95,6 @@ public class MybatisPlusAutoConfigure {
 
 
 
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "bx.mybatis-plus.tenant",name = "enable", havingValue = "true")
-    public TenantLineHandler tenantLineHandler () {
-        return new TenantLineHandler() {
-            @Override
-            public Expression getTenantId() {
-                try {
-                    return new StringValue(UserContextHolder.getTenantId());
-                } catch (BaseException e) {
-                    return new NullValue();
-                }
-            };
-
-            @Override
-            public boolean ignoreTable(String tableName) {
-                return !tenantProperties.getIgnoreTables().contains(tableName);
-            }
-
-            @Override
-            public boolean ignoreInsert(List<Column> columns, String tenantIdColumn) {
-                return TenantLineHandler.super.ignoreInsert(columns, tenantIdColumn);
-            }
-        };
-    }
 
 
 
