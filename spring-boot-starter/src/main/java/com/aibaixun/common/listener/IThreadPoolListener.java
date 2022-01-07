@@ -6,5 +6,5 @@ package com.aibaixun.common.listener;
  */
 public interface IThreadPoolListener {
 
-    void handleEvent(AbstractThreadPoolEvent abstractThreadPoolEvent);
+    void handleEvent(ThreadPoolEvent threadPoolEvent);
 }
