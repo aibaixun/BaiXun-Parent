@@ -1,5 +1,6 @@
 package com.aibaixun.common.autoconfig;
 
+import com.aibaixun.common.redis.Constants;
 import com.aibaixun.common.redis.config.CacheManagerProperties;
 import com.aibaixun.common.redis.util.RedisRepository;
 import org.springframework.beans.factory.InitializingBean;
@@ -33,19 +34,14 @@ import static com.aibaixun.common.redis.Constants.STRING_SERIALIZER;
 @EnableCaching
 @ConditionalOnClass(RedisRepository.class)
 @EnableConfigurationProperties({RedisProperties.class, CacheManagerProperties.class})
-public class RedisConfig implements InitializingBean {
+public class RedisConfig  {
 
 
     private CacheManagerProperties cacheManagerProperties;
 
 
-    private RedisTemplate<String,Object> redisTemplate;
 
 
-    @Autowired
-    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 
     @Autowired
     public void setCacheManagerProperties(CacheManagerProperties cacheManagerProperties) {
@@ -59,6 +55,10 @@ public class RedisConfig implements InitializingBean {
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(factory);
+        redisTemplate.setKeySerializer(Constants.STRING_SERIALIZER);
+        redisTemplate.setHashKeySerializer(Constants.STRING_SERIALIZER);
+        redisTemplate.setValueSerializer(Constants.OBJECT_SERIALIZER);
+        redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
 
@@ -108,11 +108,5 @@ public class RedisConfig implements InitializingBean {
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new JdkSerializationRedisSerializer()));
     }
 
-    @Override
-    public void afterPropertiesSet() {
-        redisTemplate.setKeySerializer(STRING_SERIALIZER);
-        redisTemplate.setHashKeySerializer(STRING_SERIALIZER);
-        redisTemplate.setValueSerializer(OBJECT_SERIALIZER);
-        redisTemplate.afterPropertiesSet();
-    }
+
 }
