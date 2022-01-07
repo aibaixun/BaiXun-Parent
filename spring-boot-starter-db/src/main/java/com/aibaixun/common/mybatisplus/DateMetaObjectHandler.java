@@ -41,15 +41,9 @@ public class DateMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         Object createTime = getFieldValByName(autoFillProperties.getCreateTimeField(), metaObject);
-        Object updateTime = getFieldValByName(autoFillProperties.getUpdateTimeField(), metaObject);
         long nowTs = Instant.now(Clock.systemDefaultZone()).toEpochMilli();
-        if (createTime == null || updateTime == null) {
-            if (createTime == null) {
-                setFieldValByName(autoFillProperties.getCreateTimeField(), nowTs, metaObject);
-            }
-            if (updateTime == null) {
-                setFieldValByName(autoFillProperties.getUpdateTimeField(), nowTs, metaObject);
-            }
+        if (createTime == null) {
+            setFieldValByName(autoFillProperties.getCreateTimeField(), nowTs, metaObject);
         }
     }
 
