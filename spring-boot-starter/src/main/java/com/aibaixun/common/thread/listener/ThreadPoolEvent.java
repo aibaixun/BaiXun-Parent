@@ -1,4 +1,4 @@
-package com.aibaixun.common.listener;
+package com.aibaixun.common.thread.listener;
 
 /**
  * @author jiangshicheng@aibaixun.com
