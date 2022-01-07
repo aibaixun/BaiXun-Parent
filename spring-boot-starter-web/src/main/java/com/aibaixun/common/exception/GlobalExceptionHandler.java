@@ -34,6 +34,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.ok(jsonResult);
     }
 
+    @ExceptionHandler(value = IllegalArgumentException.class)
+    public ResponseEntity<JsonResult<Void>> AssertExceptionHandler(IllegalArgumentException e) {
+        JsonResult<Void> jsonResult = JsonResult.failed(BaseResultCode.BAD_PARAMS,e.getMessage());
+        LOGGER.warn("ExceptionHandlerConfiguration--AssertExceptionHandler errorCode:{},message:{}",BaseResultCode.BAD_PARAMS,e.getMessage());
+        return ResponseEntity.ok(jsonResult);
+    }
+
 
 
     @ExceptionHandler(value = RuntimeException.class)
