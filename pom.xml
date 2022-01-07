@@ -16,6 +16,7 @@
         <module>spring-boot-starter-log</module>
         <module>spring-boot-starter-swagger</module>
         <module>spring-boot-starter-rpc</module>
+        <module>spring-boot-starter-prometheus</module>
     </modules>
     <name>BaiXun-Parent</name>
     <description>贵州百讯智汇科技父项目</description>

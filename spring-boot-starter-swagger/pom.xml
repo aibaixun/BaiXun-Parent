@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <name>BaiXun-Spring-Boot-Stater-Swagger</name>
+    <name>BaiXun-Spring-Boot-Starter-Swagger</name>
     <artifactId>spring-boot-starter-swagger</artifactId>
 
     <properties>

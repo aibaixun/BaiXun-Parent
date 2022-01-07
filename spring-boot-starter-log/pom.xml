@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>BaiXun-Spring-Boot-Stater-Log</name>
+    <name>BaiXun-Spring-Boot-Starter-Log</name>
     <artifactId>spring-boot-starter-log</artifactId>
 
     <properties>

@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <name>BaiXun-Spring-Boot-Stater-RPC</name>
+    <name>BaiXun-Spring-Boot-Starter-RPC</name>
     <artifactId>spring-boot-starter-rpc</artifactId>
 
     <properties>

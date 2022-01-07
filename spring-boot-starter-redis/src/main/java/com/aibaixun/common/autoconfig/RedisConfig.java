@@ -2,8 +2,8 @@ package com.aibaixun.common.autoconfig;
 
 import com.aibaixun.common.redis.config.CacheManagerProperties;
 import com.aibaixun.common.redis.util.RedisRepository;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -23,6 +23,9 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.aibaixun.common.redis.Constants.OBJECT_SERIALIZER;
+import static com.aibaixun.common.redis.Constants.STRING_SERIALIZER;
+
 /**
  * @author wangxiao@aibaixun.com
  * @date 2022/1/1
@@ -30,15 +33,19 @@ import java.util.Map;
 @EnableCaching
 @ConditionalOnClass(RedisRepository.class)
 @EnableConfigurationProperties({RedisProperties.class, CacheManagerProperties.class})
-public class RedisConfig {
+public class RedisConfig implements InitializingBean {
 
 
     private CacheManagerProperties cacheManagerProperties;
 
 
-    @Value("${spring.application.name}")
-    private String applicationName;
+    private RedisTemplate<String,Object> redisTemplate;
 
+
+    @Autowired
+    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     @Autowired
     public void setCacheManagerProperties(CacheManagerProperties cacheManagerProperties) {
@@ -46,15 +53,12 @@ public class RedisConfig {
     }
 
     @Bean
+    @ConditionalOnMissingBean(name = {
+            "redisTemplate"
+    })
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(factory);
-        RedisSerializer<String> stringSerializer = new StringRedisSerializer();
-        RedisSerializer<Object> redisObjectSerializer = new JdkSerializationRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setValueSerializer(redisObjectSerializer);
-        redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
 
@@ -102,5 +106,13 @@ public class RedisConfig {
                 .computePrefixWith(cacheName -> "cache".concat(":").concat(cacheName).concat(":"))
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new JdkSerializationRedisSerializer()));
+    }
+
+    @Override
+    public void afterPropertiesSet() {
+        redisTemplate.setKeySerializer(STRING_SERIALIZER);
+        redisTemplate.setHashKeySerializer(STRING_SERIALIZER);
+        redisTemplate.setValueSerializer(OBJECT_SERIALIZER);
+        redisTemplate.afterPropertiesSet();
     }
 }

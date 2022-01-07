@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <name>BaiXun-Spring-Boot-Stater-DB</name>
+    <name>BaiXun-Spring-Boot-Starter-DB</name>
     <artifactId>spring-boot-starter-db</artifactId>
 
     <properties>
