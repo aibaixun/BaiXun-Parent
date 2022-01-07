@@ -30,12 +30,12 @@ public class ThreadPoolFactory implements ITheadPoolFactory {
 
 
     @Override
-    public ThreadPoolExecutor createThreadPool() {
+    public BaseThreadPoolExecutor createThreadPool() {
         return createThreadPool(DEFAULT_CORE_THREAD_SIZE, DEFAULT_MAXIMUM_THREAD_SIZE, DEFAULT_KEEP_ALIVE, DEFAULT_KEEP_ALIVE_TIMEUNIT, BlockQueueTypeEnum.ARRAY, DEFAULT_BLOCKINGQUEUE_CAPACITY, BaseThreadFactory.forName(DEFAULT_THREAD_PREFIX_NAME), new CustomRejectedExecutionHandler());
     }
 
     @Override
-    public ThreadPoolExecutor createThreadPool(Integer corePoolSize, Integer maximumPoolSize, Long keepAliveTime, TimeUnit keepAliveTimeunit, BlockQueueTypeEnum blockQueueType, Integer blockQueueSize, ThreadFactory threadFactory, RejectedExecutionHandler rejectedHandler) {
+    public BaseThreadPoolExecutor createThreadPool(Integer corePoolSize, Integer maximumPoolSize, Long keepAliveTime, TimeUnit keepAliveTimeunit, BlockQueueTypeEnum blockQueueType, Integer blockQueueSize, ThreadFactory threadFactory, RejectedExecutionHandler rejectedHandler) {
         corePoolSize = Optional.ofNullable(corePoolSize).orElse(DEFAULT_CORE_THREAD_SIZE);
         maximumPoolSize = Optional.ofNullable(maximumPoolSize).orElse(DEFAULT_MAXIMUM_THREAD_SIZE);
         keepAliveTime = Optional.ofNullable(keepAliveTime).orElse(DEFAULT_KEEP_ALIVE);

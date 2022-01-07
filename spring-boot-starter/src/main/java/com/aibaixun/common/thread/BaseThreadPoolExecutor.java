@@ -1,7 +1,7 @@
 package com.aibaixun.common.thread;
 
 import com.aibaixun.common.listener.IThreadPoolListener;
-import com.aibaixun.common.listener.ThreadPoolErrorEvent;
+import com.aibaixun.common.listener.ThreadPoolEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,11 +31,11 @@ public class BaseThreadPoolExecutor extends ThreadPoolExecutor {
     @Override
     protected void afterExecute(Runnable runnable, Throwable throwable) {
         super.afterExecute(runnable, throwable);
-        ThreadPoolErrorEvent event = ThreadPoolErrorEvent.instant(runnable, throwable);
+        ThreadPoolEvent event = ThreadPoolEvent.instant(runnable, throwable);
         listeners.forEach(e->e.handleEvent(event));
     }
 
-    public Boolean registerListener(IThreadPoolListener listener){
+    public Boolean addListener(IThreadPoolListener listener){
         int size = listeners.size()+1;
         listeners.add(listener);
         return size==listeners.size();

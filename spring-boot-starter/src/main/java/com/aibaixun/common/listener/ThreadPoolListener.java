@@ -19,27 +19,13 @@ public class ThreadPoolListener implements IThreadPoolListener{
     private static final Logger logger = LoggerFactory.getLogger(BaseThreadPoolExecutor.class);
 
     @Override
-    public void handleEvent(AbstractThreadPoolEvent abstractThreadPoolEvent) {
-        Optional.ofNullable(abstractThreadPoolEvent).orElseThrow(()->new ThreadException("event type is null!"));
-        switch (abstractThreadPoolEvent.getThreadPoolEventType()){
-            case ERROR:
-                processingErrorEvent((ThreadPoolErrorEvent)abstractThreadPoolEvent);
-                break;
-            case NORMAL:
-                processingNormalEvent();
-                break;
-            default:
-                throw new ThreadException("event processing error! Because the event type is unknown");
-        }
-    }
-
-    private void processingErrorEvent(ThreadPoolErrorEvent threadPoolErrorEvent) {
-        Throwable hiddenThrowable = extractThrowable(threadPoolErrorEvent.getRunnable());
+    public void handleEvent(ThreadPoolEvent threadPoolEvent) {
+        Throwable hiddenThrowable = extractThrowable(threadPoolEvent.getRunnable());
         if (hiddenThrowable != null) {
             handleOrLog(hiddenThrowable);
         }
-        if (threadPoolErrorEvent.getThrowable() != null && Thread.getDefaultUncaughtExceptionHandler() == null) {
-            handleOrLog(threadPoolErrorEvent.getThrowable());
+        if (threadPoolEvent.getThrowable() != null && Thread.getDefaultUncaughtExceptionHandler() == null) {
+            handleOrLog(threadPoolEvent.getThrowable());
         }
     }
 
