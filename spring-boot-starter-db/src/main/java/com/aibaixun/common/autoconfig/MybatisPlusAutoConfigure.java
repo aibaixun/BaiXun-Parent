@@ -38,17 +38,12 @@ public class MybatisPlusAutoConfigure {
 
     private TenantProperties tenantProperties;
 
-    private AutoFillProperties autoFillProperties;
 
     @Autowired
     public void setProperties(MybatisPlusAutoConfigProperties properties) {
         this.properties = properties;
         this.tenantProperties = properties.getTenant();
-        this.autoFillProperties = properties.getFill();
     }
-
-
-
 
 
 
@@ -85,20 +80,6 @@ public class MybatisPlusAutoConfigure {
         }
         return interceptor;
     }
-
-    @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "bx.mybatis-plus.fill", name = "enable", havingValue = "true", matchIfMissing = true)
-    public MetaObjectHandler metaObjectHandler() {
-        return new DateMetaObjectHandler(autoFillProperties);
-    }
-
-
-
-
-
-
-
 
 
 }

@@ -23,13 +23,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import({
         SwaggerProperties.class
 })
+@ConditionalOnProperty(prefix = "bx.swagger",value = "enable",havingValue = "true")
 public class SwaggerAutoConfiguration {
 
 
     private SwaggerProperties swaggerProperties;
 
     @Bean
-    @ConditionalOnProperty(prefix = "bx.swagger",value = "enable",havingValue = "true")
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select()

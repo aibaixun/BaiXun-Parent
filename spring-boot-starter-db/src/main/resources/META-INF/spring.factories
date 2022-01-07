@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.aibaixun.common.autoconfig.MybatisPlusAutoConfigure
+com.aibaixun.common.autoconfig.MybatisPlusAutoConfigure,\
+com.aibaixun.common.autoconfig.MetaObjectHandlerAutoconfig
