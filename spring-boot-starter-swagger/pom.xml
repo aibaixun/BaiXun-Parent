@@ -19,6 +19,7 @@
         <dependency>
             <groupId>com.aibaixun</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
