@@ -9,6 +9,7 @@ public class BaseAuthUser implements UserInfo, Serializable {
     private String userId;
     private String username;
     private String tenantId;
+    private String type;
     //token到期时间
     private Long tokenExpired;
     //刷新token到期时间
@@ -71,5 +72,13 @@ public class BaseAuthUser implements UserInfo, Serializable {
 
     public void setRoleIds(Set<String> roleIds) {
         this.roleIds = roleIds;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
