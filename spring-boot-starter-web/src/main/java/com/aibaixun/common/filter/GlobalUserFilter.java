@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  * @author crj
- * @description: TODO
+ * @description: 获取当前登录的用户信息
  * @date 2022/1/139:27
  */
 @WebFilter(urlPatterns = "/*", filterName = "globalUserFilter")
