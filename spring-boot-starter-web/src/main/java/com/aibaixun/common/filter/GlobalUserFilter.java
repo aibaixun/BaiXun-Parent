@@ -4,6 +4,7 @@ import com.aibaixun.basic.constants.BsaeConst;
 import com.aibaixun.basic.context.UserContextHolder;
 import com.aibaixun.basic.entity.BaseAuthUser;
 import com.aibaixun.common.redis.util.RedisRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,11 @@ public class GlobalUserFilter implements Filter, Ordered {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String token = request.getHeader(BsaeConst.TOKEN_HEADER_NAME);
-        BaseAuthUser userInfo = (BaseAuthUser) redisRepository.get(getRedisKey(token));
+        if(StringUtils.isBlank(token)){
+            String userId = request.getHeader(BsaeConst.USERID_HEADER_NAME);
+            token = (String) redisRepository.get(getUserIdRedisKey(userId));
+        }
+        BaseAuthUser userInfo = (BaseAuthUser) redisRepository.get(getTokenRedisKey(token));
         UserContextHolder.setUserInfo(userInfo);
         filterChain.doFilter(servletRequest,servletResponse);
     }
@@ -38,7 +43,10 @@ public class GlobalUserFilter implements Filter, Ordered {
     public int getOrder() {
         return 1;
     }
-    private String getRedisKey(String token){
+    private String getTokenRedisKey(String token){
         return BsaeConst.TOKEN_REDIS_PREFIX+token;
+    }
+    private String getUserIdRedisKey(String userId){
+        return BsaeConst.USERID_REDIS_PREFIX+userId;
     }
 }

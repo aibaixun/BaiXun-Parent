@@ -15,4 +15,8 @@ public class BsaeConst {
      * 从redis中获取token的前缀
      */
     public static final String TOKEN_REDIS_PREFIX = "gail-auth:";
+
+    public static final String USERID_REDIS_PREFIX = "gail-userId:";
+
+    public static final String USERID_HEADER_NAME = "userId";
 }
