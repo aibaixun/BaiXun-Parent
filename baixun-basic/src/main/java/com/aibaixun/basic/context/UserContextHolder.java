@@ -39,7 +39,7 @@ public class UserContextHolder {
         return userInfo.getUserLabel();
     }
 
-    private static UserInfo getUserInfo() throws BaseException {
+    public static UserInfo getUserInfo() throws BaseException {
         var userInfo = CONTEXT.get();
         if (userInfo == null){
             throw new BaseException("用户信息不存在",BaseResultCode.NO_LOGIN);
