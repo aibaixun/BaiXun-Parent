@@ -1,8 +1,6 @@
 package com.aibaixun.common.redis;
 
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.serializer.*;
 
 /**
  * @author wangxiao@aibaixun.com
@@ -10,6 +8,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 public class Constants {
 
-    public static final RedisSerializer<Object> OBJECT_SERIALIZER = new JdkSerializationRedisSerializer();
+    public static final RedisSerializer<Object> OBJECT_SERIALIZER = new GenericJackson2JsonRedisSerializer();
     public static final RedisSerializer<String> STRING_SERIALIZER = new StringRedisSerializer();
 }

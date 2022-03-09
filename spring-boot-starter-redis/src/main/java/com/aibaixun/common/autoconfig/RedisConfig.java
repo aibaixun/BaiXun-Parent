@@ -36,9 +36,6 @@ public class RedisConfig  {
     private CacheManagerProperties cacheManagerProperties;
 
 
-
-
-
     @Autowired
     public void setCacheManagerProperties(CacheManagerProperties cacheManagerProperties) {
         this.cacheManagerProperties = cacheManagerProperties;
