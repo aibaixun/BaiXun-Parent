@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -188,4 +190,14 @@ public class JsonUtil {
             throw new RuntimeException(e);
         }
     }
+
+
+    public static ObjectNode createObjNode () {
+        return MAPPER.createObjectNode();
+    }
+
+    public static ArrayNode createArrayNode () {
+        return MAPPER.createArrayNode();
+    }
+
 }
