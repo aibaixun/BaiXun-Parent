@@ -48,6 +48,7 @@ public class RedisConfig  {
         redisTemplate.setKeySerializer(Constants.STRING_SERIALIZER);
         redisTemplate.setHashKeySerializer(Constants.STRING_SERIALIZER);
         redisTemplate.setValueSerializer(Constants.OBJECT_SERIALIZER);
+        redisTemplate.setHashValueSerializer(Constants.OBJECT_SERIALIZER);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
