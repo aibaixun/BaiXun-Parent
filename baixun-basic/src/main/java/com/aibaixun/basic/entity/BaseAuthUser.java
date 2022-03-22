@@ -46,6 +46,10 @@ public class BaseAuthUser implements UserInfo, Serializable {
         return username;
     }
 
+    public void setUserLabel(String userLabel) {
+        username = userLabel;
+    }
+
     public void setTenantId(String tenantId) {
         this.tenantId = tenantId;
     }
@@ -81,4 +85,5 @@ public class BaseAuthUser implements UserInfo, Serializable {
     public void setType(String type) {
         this.type = type;
     }
+
 }
