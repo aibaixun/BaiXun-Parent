@@ -189,16 +189,6 @@
         </pluginManagement>
     </build>
 
-    <repositories>
-        <repository>
-            <id>maven_aibaixun</id>
-            <name>maven_aibaixun</name>
-            <url>http://maven.aibaixun.com/repository/maven-public/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 
     <developers>
@@ -214,12 +204,6 @@
             <name>maven_aibaixun</name>
             <url>http://maven.aibaixun.com/repository/maven-releases</url>
         </repository>
-        <snapshotRepository>
-            <id>maven_aibaixun</id>
-            <name>maven_aibaixun</name>
-            <url>http://maven.aibaixun.com/repository/maven-snapshot</url>
-            <uniqueVersion>true</uniqueVersion>
-        </snapshotRepository>
     </distributionManagement>
 
 </project>
