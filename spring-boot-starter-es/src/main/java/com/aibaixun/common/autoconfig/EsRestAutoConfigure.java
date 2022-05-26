@@ -9,6 +9,7 @@ import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchProperties;
 import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientProperties;
 import org.springframework.boot.autoconfigure.elasticsearch.RestClientBuilderCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,11 +24,10 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 @EnableConfigurationProperties(RestClientPoolProperties.class)
 public class EsRestAutoConfigure {
     @Bean
-    public RestClientBuilderCustomizer restClientBuilderCustomizer(RestClientPoolProperties poolProperties
-            , ElasticsearchRestClientProperties restProperties) {
+    public RestClientBuilderCustomizer restClientBuilderCustomizer(RestClientPoolProperties poolProperties,ElasticsearchProperties elasticsearchProperties) {
         return (builder) -> {
             setRequestConfig(builder, poolProperties);
-            setHttpClientConfig(builder, poolProperties, restProperties);
+            setHttpClientConfig(builder, poolProperties, elasticsearchProperties);
         };
     }
 
@@ -46,7 +46,7 @@ public class EsRestAutoConfigure {
     /**
      * 异步httpclient连接数配置
      */
-    private void setHttpClientConfig(RestClientBuilder builder, RestClientPoolProperties poolProperties, ElasticsearchRestClientProperties restProperties){
+    private void setHttpClientConfig(RestClientBuilder builder, RestClientPoolProperties poolProperties, ElasticsearchProperties restProperties){
         builder.setHttpClientConfigCallback(httpClientBuilder -> {
             httpClientBuilder.setMaxConnTotal(poolProperties.getMaxConnectNum())
                     .setMaxConnPerRoute(poolProperties.getMaxConnectPerRoute());
