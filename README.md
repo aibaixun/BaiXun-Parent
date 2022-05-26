@@ -18,6 +18,9 @@
 - spring-boot-starter-redis: redis的封装，提供统一key前缀是项目命，spring.application.name，同时提供分布式锁实现（可用注解和编程类）和申明式缓存
 - spring-boot-starter-log: 日志处理。暂时未实现
 - spring-boot-starter-prometheus: prometheus的实现，提供自动暴露endpoint,统一暴露prometheus,info,health
+- spring-boot-starter-cache: cache 的封装 支持caffine 与redis
+- spring-boot-starter-minio: minio 操纵
+- spring-boot-starter-snowflake: 雪花id 的使用，主要增加看门狗和mybatis-plus 拦截
 ## 使用
 
 1. 总体使用策略是：引入依赖包，增加yml配置项
@@ -88,4 +91,4 @@ bx:
 ```
  
 ## 使用说明
-暂无后期补充
+引入包，使用配置文件，具体内容看Properties类
