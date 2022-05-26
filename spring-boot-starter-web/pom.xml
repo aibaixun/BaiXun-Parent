@@ -24,10 +24,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.aibaixun</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
