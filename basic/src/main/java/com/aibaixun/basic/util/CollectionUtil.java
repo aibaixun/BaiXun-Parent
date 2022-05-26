@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * 集合相关工具类
  * @author wangxiao@aibaixun.com
  */
-public class CollectionTool {
+public class CollectionUtil {
 
 
 	public static <T> Set<T> emptyIfNull(Set<T> set) {
@@ -47,7 +47,7 @@ public class CollectionTool {
 			result.addAll(coll2);
 		}
 
-		if (ArrayTool.isNotEmpty(otherColls)) {
+		if (ArrayUtil.isNotEmpty(otherColls)) {
 			for (Collection<T> otherColl : otherColls) {
 				result.addAll(otherColl);
 			}
@@ -70,7 +70,7 @@ public class CollectionTool {
 			result.addAll(coll2);
 		}
 
-		if (ArrayTool.isNotEmpty(otherColls)) {
+		if (ArrayUtil.isNotEmpty(otherColls)) {
 			for (Collection<T> otherColl : otherColls) {
 				result.addAll(otherColl);
 			}

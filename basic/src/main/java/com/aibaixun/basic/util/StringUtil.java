@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -12,9 +12,17 @@ import java.util.function.Function;
  * 字符串工具类
  * @author wangxiao@aibaixun.com
  */
-public class StringTool {
+public class StringUtil {
 
 
+
+	public static boolean isEmpty(CharSequence cs) {
+		return cs == null || cs.length() == 0;
+	}
+
+	public static boolean isNotEmpty(CharSequence cs) {
+		return !isEmpty(cs);
+	}
 	public static boolean isBlank(Object obj) {
 		if (null == obj) {
 			return true;
@@ -31,7 +39,7 @@ public class StringTool {
 			return true;
 		}
 		for (int i = 0; i < length; i++) {
-			if (!CharTool.isBlankChar(str.charAt(i))) {
+			if (!CharUtil.isBlankChar(str.charAt(i))) {
 				return false;
 			}
 		}
@@ -74,8 +82,8 @@ public class StringTool {
 			return str((Byte[]) obj, charset);
 		} else if (obj instanceof ByteBuffer) {
 			return str((ByteBuffer) obj, charset);
-		} else if (ArrayTool.isArray(obj)) {
-			return ArrayTool.toString(obj);
+		} else if (ArrayUtil.isArray(obj)) {
+			return ArrayUtil.toString(obj);
 		}
 		return obj.toString();
 	}
@@ -167,7 +175,7 @@ public class StringTool {
 	}
 
 	public static String cleanBlank(CharSequence str) {
-		return filter(str, c -> !CharTool.isBlankChar(c));
+		return filter(str, c -> !CharUtil.isBlankChar(c));
 	}
 
 	public static String filter(CharSequence str, final Function<Character,Boolean> filter) {

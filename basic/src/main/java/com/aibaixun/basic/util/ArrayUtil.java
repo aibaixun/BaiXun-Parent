@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
@@ -11,7 +11,7 @@ import java.util.Random;
  * 数组工具类
  * @author wangxiao@aibaixun.com
  */
-public class ArrayTool {
+public class ArrayUtil {
 
 
 	public static <T> boolean isEmpty(T[] array) {
@@ -49,7 +49,7 @@ public class ArrayTool {
 	public static <T> boolean hasNull(T... array) {
 		if (isNotEmpty(array)) {
 			for (T element : array) {
-				if (ObjectTool.isNull(element)) {
+				if (Objectutil.isNull(element)) {
 					return true;
 				}
 			}
@@ -96,7 +96,7 @@ public class ArrayTool {
 
 		final Class<?> componentType = type.isArray() ? type.getComponentType() : type;
 		final Object[] array = (Object[]) arrayObj;
-		final Object[] result = ArrayTool.newArray(componentType, array.length);
+		final Object[] result = ArrayUtil.newArray(componentType, array.length);
 		System.arraycopy(array, 0, result, 0, array.length);
 		return result;
 	}
@@ -379,7 +379,7 @@ public class ArrayTool {
 			return Arrays.toString((float[]) obj);
 		} else if (obj instanceof double[]) {
 			return Arrays.toString((double[]) obj);
-		} else if (ArrayTool.isArray(obj)) {
+		} else if (ArrayUtil.isArray(obj)) {
 
 			try {
 				return Arrays.deepToString((Object[]) obj);

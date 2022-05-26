@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 
 
@@ -6,7 +6,7 @@ package com.aibaixun.basic.toolkit;
  * @author wangxiao@aibaixun.com
  * @since 4.0.1
  */
-public class CharTool {
+public class CharUtil {
 
 
 	public static char SPACE = ' ';

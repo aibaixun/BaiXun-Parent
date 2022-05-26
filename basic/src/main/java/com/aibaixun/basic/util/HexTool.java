@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -46,7 +46,7 @@ public class HexTool {
 
 
 	public static char[] encodeHex(String str) {
-		return encodeHex(StringTool.bytes(str), true);
+		return encodeHex(StringUtil.bytes(str), true);
 	}
 
 
@@ -61,7 +61,7 @@ public class HexTool {
 
 
 	public static String encodeHexStr(String data, Charset charset) {
-		return encodeHexStr(StringTool.bytes(data, charset), true);
+		return encodeHexStr(StringUtil.bytes(data, charset), true);
 	}
 
 
@@ -83,15 +83,15 @@ public class HexTool {
 
 
 	public static String decodeHexStr(String hexStr, Charset charset) {
-		if (StringTool.isBlank(hexStr)) {
+		if (StringUtil.isBlank(hexStr)) {
 			return hexStr;
 		}
-		return StringTool.str(decodeHex(hexStr), charset);
+		return StringUtil.str(decodeHex(hexStr), charset);
 	}
 
 
 	public static String decodeHexStr(char[] hexData, Charset charset) {
-		return StringTool.str(decodeHex(hexData), charset);
+		return StringUtil.str(decodeHex(hexData), charset);
 	}
 
 
@@ -106,10 +106,10 @@ public class HexTool {
 
 
 	public static byte[] decodeHex(CharSequence hexData) {
-		if (StringTool.isBlank(hexData)) {
+		if (StringUtil.isBlank(hexData)) {
 			return null;
 		}
-		hexData = StringTool.cleanBlank(hexData);
+		hexData = StringUtil.cleanBlank(hexData);
 		int len = hexData.length();
 
 		if ((len & 0x01) != 0) {
@@ -181,7 +181,7 @@ public class HexTool {
 		final StringBuilder builder = new StringBuilder(length + length / 2);
 		builder.append(hexStr.charAt(0)).append(hexStr.charAt(1));
 		for (int i = 2; i < length - 1; i += 2) {
-			builder.append(CharTool.SPACE).append(hexStr.charAt(i)).append(hexStr.charAt(i + 1));
+			builder.append(CharUtil.SPACE).append(hexStr.charAt(i)).append(hexStr.charAt(i + 1));
 		}
 		return builder.toString();
 	}

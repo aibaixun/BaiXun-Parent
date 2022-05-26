@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -12,7 +12,7 @@ import java.text.ParseException;
  * 数字工具类
  * @author wangxiao@aibaixun.com
  */
-public class NumberTool {
+public class NumberUtil {
 
 
 	private static final int DEFAULT_DIV_SCALE = 10;
@@ -48,7 +48,7 @@ public class NumberTool {
 
 
 	public static BigDecimal add(Number... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 		Number value = values[0];
@@ -64,7 +64,7 @@ public class NumberTool {
 
 
 	public static BigDecimal add(String... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 
@@ -72,7 +72,7 @@ public class NumberTool {
 		BigDecimal result = toBigDecimal(value);
 		for (int i = 1; i < values.length; i++) {
 			value = values[i];
-			if (!StringTool.isBlank(value)) {
+			if (!StringUtil.isBlank(value)) {
 				result = result.add(toBigDecimal(value));
 			}
 		}
@@ -81,7 +81,7 @@ public class NumberTool {
 
 
 	public static BigDecimal add(BigDecimal... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 
@@ -128,7 +128,7 @@ public class NumberTool {
 
 
 	public static BigDecimal sub(Number... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 		Number value = values[0];
@@ -144,7 +144,7 @@ public class NumberTool {
 
 
 	public static BigDecimal sub(String... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 
@@ -152,7 +152,7 @@ public class NumberTool {
 		BigDecimal result = toBigDecimal(value);
 		for (int i = 1; i < values.length; i++) {
 			value = values[i];
-			if (!StringTool.isBlank(value)) {
+			if (!StringUtil.isBlank(value)) {
 				result = result.subtract(toBigDecimal(value));
 			}
 		}
@@ -161,7 +161,7 @@ public class NumberTool {
 
 
 	public static BigDecimal sub(BigDecimal... values) {
-		if (ArrayTool.isEmpty(values)) {
+		if (ArrayUtil.isEmpty(values)) {
 			return BigDecimal.ZERO;
 		}
 		BigDecimal value = values[0];
@@ -205,7 +205,7 @@ public class NumberTool {
 	}
 
 	public static BigDecimal mul(Number... values) {
-		if (ArrayTool.isEmpty(values) || ArrayTool.hasNull(values)) {
+		if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
 			return BigDecimal.ZERO;
 		}
 		Number value = values[0];
@@ -224,7 +224,7 @@ public class NumberTool {
 
 
 	public static BigDecimal mul(String... values) {
-		if (ArrayTool.isEmpty(values) || ArrayTool.hasNull(values)) {
+		if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
 			return BigDecimal.ZERO;
 		}
 		BigDecimal result = new BigDecimal(values[0]);
@@ -235,7 +235,7 @@ public class NumberTool {
 	}
 
 	public static BigDecimal mul(BigDecimal... values) {
-		if (ArrayTool.isEmpty(values) || ArrayTool.hasNull(values)) {
+		if (ArrayUtil.isEmpty(values) || ArrayUtil.hasNull(values)) {
 			return BigDecimal.ZERO;
 		}
 		BigDecimal result = values[0];
@@ -516,7 +516,7 @@ public class NumberTool {
 
 
 	public static boolean equals(char c1, char c2, boolean ignoreCase) {
-		return CharTool.equals(c1, c2, ignoreCase);
+		return CharUtil.equals(c1, c2, ignoreCase);
 	}
 
 
@@ -584,7 +584,7 @@ public class NumberTool {
 
 
 	public static BigDecimal toBigDecimal(String numberStr) {
-		if(StringTool.isBlank(numberStr)){
+		if(StringUtil.isBlank(numberStr)){
 			return BigDecimal.ZERO;
 		}
 		try {
@@ -615,7 +615,7 @@ public class NumberTool {
 
 
 	public static BigInteger toBigInteger(String number) {
-		return StringTool.isBlank(number) ? BigInteger.ZERO : new BigInteger(number);
+		return StringUtil.isBlank(number) ? BigInteger.ZERO : new BigInteger(number);
 	}
 
 	public static Number parseNumber(String numberStr) throws NumberFormatException {

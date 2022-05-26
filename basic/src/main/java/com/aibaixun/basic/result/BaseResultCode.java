@@ -51,7 +51,12 @@ public enum BaseResultCode implements ResultCode {
     /**
      * 锁 异常
      */
-    LOCK_FAILED(5002);
+    LOCK_FAILED(5002),
+
+    /**
+     * json 异常
+     */
+    JSON_ERROR(5003);
 
     private final int code;
 

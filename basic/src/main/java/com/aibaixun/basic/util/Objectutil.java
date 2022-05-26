@@ -1,4 +1,4 @@
-package com.aibaixun.basic.toolkit;
+package com.aibaixun.basic.util;
 
 
 import java.lang.reflect.Array;
@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  *
  * @author wangxiao@aibaixun.com
  */
-public class ObjectTool {
+public class Objectutil {
 
 
 	public static boolean equals(Object obj1, Object obj2) {
@@ -21,7 +21,7 @@ public class ObjectTool {
 
 	public static boolean equal(Object obj1, Object obj2) {
 		if (obj1 instanceof BigDecimal && obj2 instanceof BigDecimal) {
-			return NumberTool.equals((BigDecimal) obj1, (BigDecimal) obj2);
+			return NumberUtil.equals((BigDecimal) obj1, (BigDecimal) obj2);
 		}
 		return Objects.equals(obj1, obj2);
 	}
@@ -144,7 +144,7 @@ public class ObjectTool {
 	}
 
 	public static <T extends CharSequence> T defaultIfBlank(final T str, final T defaultValue) {
-		return StringTool.isBlank(str) ? defaultValue : str;
+		return StringUtil.isBlank(str) ? defaultValue : str;
 	}
 
 

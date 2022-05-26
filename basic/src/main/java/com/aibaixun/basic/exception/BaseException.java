@@ -7,7 +7,7 @@ import com.aibaixun.basic.result.ResultCode;
  * @author wangxiao@aibaoxun.com
  * @date 2021/10/27
  */
-public  class BaseException extends Exception{
+public  class BaseException extends RuntimeException{
 
     private static final long serialVersionUID = 1L;
 
