@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "name": "bx.minio",
+      "type": "com.aibaixun.minio.MinioProperties",
+      "sourceType": "com.aibaixun.minio.MinioProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bx.minio.access-key",
+      "type": "java.lang.String",
+      "sourceType": "com.aibaixun.minio.MinioProperties"
+    },
+    {
+      "name": "bx.minio.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.aibaixun.minio.MinioProperties"
+    },
+    {
+      "name": "bx.minio.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.aibaixun.minio.MinioProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "bx.minio.end-point",
+      "type": "java.lang.String",
+      "sourceType": "com.aibaixun.minio.MinioProperties"
+    },
+    {
+      "name": "bx.minio.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.aibaixun.minio.MinioProperties"
+    }
+  ],
+  "hints": []
+}

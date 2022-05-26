@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "bx.cache",
+      "type": "com.aibaixun.cache.CacheProperties",
+      "sourceType": "com.aibaixun.cache.CacheProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bx.cache.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.aibaixun.cache.CacheProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "bx.cache.first-cache-expired-seconds",
+      "type": "java.lang.Long",
+      "sourceType": "com.aibaixun.cache.CacheProperties",
+      "defaultValue": 900
+    },
+    {
+      "name": "bx.cache.first-cache-maximum-size",
+      "type": "java.lang.Long",
+      "sourceType": "com.aibaixun.cache.CacheProperties",
+      "defaultValue": 1000
+    },
+    {
+      "name": "bx.cache.second-cache-expired-seconds",
+      "type": "java.lang.Long",
+      "sourceType": "com.aibaixun.cache.CacheProperties",
+      "defaultValue": 3600
+    }
+  ],
+  "hints": []
+}

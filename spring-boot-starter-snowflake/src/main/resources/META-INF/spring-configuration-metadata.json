@@ -1,0 +1,35 @@
+{
+  "groups": [
+    {
+      "name": "bx.snow",
+      "type": "com.aibaixun.snowflake.snowflake.SnowProperties",
+      "sourceType": "com.aibaixun.snowflake.config.SnowProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bx.snow.custom-prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.aibaixun.snowflake.config.SnowProperties"
+    },
+    {
+      "name": "bx.snow.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.aibaixun.snowflake.config.SnowProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "bx.snow.watch-dog-expire-time",
+      "type": "java.lang.Long",
+      "sourceType": "com.aibaixun.snowflake.config.SnowProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "bx.snow.watch-dog-schedule-time",
+      "type": "java.lang.Long",
+      "sourceType": "com.aibaixun.snowflake.config.SnowProperties",
+      "defaultValue": 10
+    }
+  ],
+  "hints": []
+}
