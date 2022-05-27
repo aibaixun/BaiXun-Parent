@@ -27,11 +27,11 @@ public class JwtUtil {
     public final static String DEFAULT_TENANT_ID = "tid";
 
 
-    private static String encode(String secret, long expireTime, String k1, String v1,String k2,String v2) {
+    public static String encode(String secret, long expireTime, String k1, String v1,String k2,String v2) {
         return encode(secret,Map.of(k1,v1,k2,v2),expireTime);
     }
 
-    private static String encode(String secret, Map<String,String> kv, long expireTime) {
+    public static String encode(String secret, Map<String,String> kv, long expireTime) {
         if (secret == null || secret.length() < 1) {
             secret = DEFAULT_SECRET;
         }
