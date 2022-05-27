@@ -1,7 +1,9 @@
 package com.aibaixun.minio;
 
+import io.minio.BucketExistsArgs;
+import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
-import io.minio.policy.PolicyType;
+import io.minio.SetBucketPolicyArgs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -28,6 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 public class MinioConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(MinioConfiguration.class);
 
+
+
     public MinioConfiguration() {
     }
 
@@ -38,11 +42,31 @@ public class MinioConfiguration {
         MinioClient minioClient = null;
 
         try {
-            minioClient = new MinioClient(minioProperties.getEndPoint(), minioProperties.getAccessKey(), minioProperties.getSecretKey());
-            boolean isExist = minioClient.bucketExists(minioProperties.getBucketName());
+            minioClient =  MinioClient.builder().endpoint(minioProperties.getEndPoint()).credentials(minioProperties.getAccessKey(),minioProperties.getSecretKey()).build();
+            boolean isExist = minioClient.bucketExists( BucketExistsArgs.builder().bucket(minioProperties.getBucketName()).build());
             if (!isExist) {
-                minioClient.makeBucket(minioProperties.getBucketName());
-                minioClient.setBucketPolicy(minioProperties.getBucketName(), "*.*", PolicyType.READ_ONLY);
+                var bucketName = minioProperties.getBucketName();
+                String policyJson = "{\n" +
+                        "\t\"Version\": \"2012-10-17\",\n" +
+                        "\t\"Statement\": [{\n" +
+                        "\t\t\"Effect\": \"Allow\",\n" +
+                        "\t\t\"Principal\": {\n" +
+                        "\t\t\t\"AWS\": [\"*\"]\n" +
+                        "\t\t},\n" +
+                        "\t\t\"Action\": [\"s3:GetBucketLocation\", \"s3:ListBucket\", \"s3:ListBucketMultipartUploads\"],\n" +
+                        "\t\t\"Resource\": [\"arn:aws:s3:::" + bucketName + "\"]\n" +
+                        "\t}, {\n" +
+                        "\t\t\"Effect\": \"Allow\",\n" +
+                        "\t\t\"Principal\": {\n" +
+                        "\t\t\t\"AWS\": [\"*\"]\n" +
+                        "\t\t},\n" +
+                        "\t\t\"Action\": [\"s3:AbortMultipartUpload\", \"s3:DeleteObject\", \"s3:GetObject\", \"s3:ListMultipartUploadParts\", \"s3:PutObject\"],\n" +
+                        "\t\t\"Resource\": [\"arn:aws:s3:::" + bucketName + "/*\"]\n" +
+                        "\t}]\n" +
+                        "}\n";
+                minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+                minioClient.setBucketPolicy(SetBucketPolicyArgs.builder().bucket(bucketName).config(policyJson).build());
+
             }
 
             return minioClient;

@@ -49,7 +49,7 @@ public class ArrayUtil {
 	public static <T> boolean hasNull(T... array) {
 		if (isNotEmpty(array)) {
 			for (T element : array) {
-				if (Objectutil.isNull(element)) {
+				if (ObjectUtil.isNull(element)) {
 					return true;
 				}
 			}

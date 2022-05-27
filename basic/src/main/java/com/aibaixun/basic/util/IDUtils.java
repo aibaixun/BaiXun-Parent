@@ -1,6 +1,7 @@
 package com.aibaixun.basic.util;
 
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author wang xiao
@@ -17,5 +18,10 @@ public class IDUtils {
 
     public static String randomUUID() {
         return UUID.randomUUID().toString();
+    }
+
+
+    public static Long randomLongId() {
+        return ThreadLocalRandom.current().nextLong(2<<10, 2L <<30);
     }
 }
