@@ -75,11 +75,11 @@ public class MinioConfiguration {
         }
     }
 
-    @Bean
-    @ConditionalOnClass({HttpServletResponse.class, MultipartFile.class})
-    AttachmentManager attachmentManager(MinioClient minioClient, MinioProperties minioProperties) {
-        AttachmentManager attachmentManager = new AttachmentManager(minioClient);
-        attachmentManager.setBucketName(minioProperties.getBucketName());
-        return attachmentManager;
-    }
+//    @Bean
+//    @ConditionalOnClass({HttpServletResponse.class, MultipartFile.class})
+//    AttachmentManager attachmentManager(MinioClient minioClient, MinioProperties minioProperties) {
+//        AttachmentManager attachmentManager = new AttachmentManager(minioClient);
+//        attachmentManager.setBucketName(minioProperties.getBucketName());
+//        return attachmentManager;
+//    }
 }
