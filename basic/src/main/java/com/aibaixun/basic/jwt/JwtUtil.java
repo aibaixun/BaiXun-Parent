@@ -23,8 +23,8 @@ public class JwtUtil {
     private final static String ISSUER = "bx";
 
 
-    private final static String DEFAULT_USER_ID = "uid";
-    private final static String DEFAULT_TENANT_ID = "tid";
+    public final static String DEFAULT_USER_ID = "uid";
+    public final static String DEFAULT_TENANT_ID = "tid";
 
 
     private static String encode(String secret, long expireTime, String k1, String v1,String k2,String v2) {
