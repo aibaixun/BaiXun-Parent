@@ -35,12 +35,12 @@
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
-        <mybatis-plus-core.version>3.4.3.4</mybatis-plus-core.version>
+        <mybatis-plus-core.version>3.5.1</mybatis-plus-core.version>
         <sharding-sphere.version>4.1.1</sharding-sphere.version>
         <docker-maven-plugin.version>1.2.0</docker-maven-plugin.version>
         <maven.jar.version>3.2.0</maven.jar.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <swagger.version>3.0.0</swagger.version>
         <beanutil-version>1.8.3</beanutil-version>
         <easyexcel.version>3.0.5</easyexcel.version>
