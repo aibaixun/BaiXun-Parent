@@ -21,6 +21,10 @@ public enum BaseResultCode implements ResultCode {
     REFRESH_TOKEN_EXPIRED(2001),
 
     /**
+     * BAD request 被限制访问 比如token没有ip 黑名单
+     */
+    BAD_REQUEST(4000),
+    /**
      * 参数错误
      */
     BAD_PARAMS(4001),
