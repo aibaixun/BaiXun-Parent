@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  *
  * @author wangxiao@aibaixun.com
  */
-public class Objectutil {
+public class ObjectUtil {
 
 
 	public static boolean equals(Object obj1, Object obj2) {

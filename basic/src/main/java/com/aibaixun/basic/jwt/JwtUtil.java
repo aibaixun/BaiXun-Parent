@@ -2,7 +2,7 @@ package com.aibaixun.basic.jwt;
 
 
 import com.aibaixun.basic.util.IDUtils;
-import com.aibaixun.basic.util.Objectutil;
+import com.aibaixun.basic.util.ObjectUtil;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
@@ -44,7 +44,7 @@ public class JwtUtil {
                 .withIssuer(ISSUER)
                 .withJWTId(String.valueOf(IDUtils.randomLongId()))
                 .withExpiresAt(expDate);
-        if (Objectutil.isNotNull(kv)){
+        if (ObjectUtil.isNotNull(kv)){
             for (Map.Entry<String, String> entry : kv.entrySet()) {
                 builder.withClaim(entry.getKey(),entry.getValue());
             }
