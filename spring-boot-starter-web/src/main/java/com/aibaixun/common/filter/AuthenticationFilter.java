@@ -21,7 +21,7 @@ import java.io.IOException;
 @Order
 @WebFilter(
         filterName = "authenticationFilter",
-        urlPatterns = {"/*"}
+        urlPatterns = {"/**"}
 )
 @Component
 public class AuthenticationFilter implements Filter {

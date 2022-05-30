@@ -18,7 +18,7 @@ import java.util.Objects;
 @Order
 @WebFilter(
         filterName = "traceIdFilter",
-        urlPatterns = {"/*"}
+        urlPatterns = {"/**"}
 )
 @Component
 public class TraceIdFilter implements Filter {
