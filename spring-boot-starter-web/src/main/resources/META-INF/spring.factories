@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.aibaixun.common.autoconfig.GlobalExceptionHandlerAutoConfig
+com.aibaixun.common.autoconfig.GlobalExceptionHandlerAutoConfig,\
+com.aibaixun.common.filter.TraceIdFilter,\
+com.aibaixun.common.filter.AuthenticationFilter  
