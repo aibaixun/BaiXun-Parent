@@ -40,14 +40,14 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         String uid = request.getHeader(UID);
         UserSessionUtil.setCurrentSession(uid);
-        logger.info("请求地址: {}", request.getRequestURI());
         if (StringUtil.isEmpty(request.getHeader(X_REAL_IP))) {
             CurrentSafeTicketUtil.setRealIp(request.getHeader(X_FORWARD_FOR));
         } else {
             CurrentSafeTicketUtil.setRealIp(request.getHeader(X_REAL_IP));
         }
-
+        logger.info("Request Path is: {} from ip: {} by uid:{},startTime is:{}", request.getRequestURI(),CurrentSafeTicketUtil.getRealIp(),uid,System.currentTimeMillis());
         filterChain.doFilter(servletRequest, servletResponse);
+        logger.info("Request Path is: {} from ip: {} by uid:{},endTime is:{}", request.getRequestURI(),CurrentSafeTicketUtil.getRealIp(),uid,System.currentTimeMillis());
         UserSessionUtil.removeCurrentSession();
         CurrentSafeTicketUtil.deleteRealIp();
     }
