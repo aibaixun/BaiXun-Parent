@@ -3,17 +3,26 @@ package com.aibaixun.basic.entity;
 import java.io.Serializable;
 import java.util.Set;
 
-public class BaseAuthUser implements UserInfo, Serializable {
+/**
+ * 基础用户信息
+ * @author huanghaijiang
+ * update by wangxiao rename and fix field name
+ */
+public  class AuthUserInfo implements UserInfo, Serializable {
     private static final long serialVersionUID = 1L;
 
     private String userId;
     private String username;
     private String tenantId;
     private String type;
-    //token到期时间
+    /**
+     * token到期时间
+     */
     private Long tokenExpired;
-    //刷新token到期时间
-    private Long reflashTokenExpired;
+    /**
+     * 刷新token到期时间
+     */
+    private Long refreshTokenExpired;
     private Set<String> roleIds;
 
     @Override
@@ -41,7 +50,6 @@ public class BaseAuthUser implements UserInfo, Serializable {
     /**
      * 用户名称
      */
-    @Override
     public String getUserLabel() {
         return username;
     }
@@ -62,12 +70,12 @@ public class BaseAuthUser implements UserInfo, Serializable {
         this.tokenExpired = tokenExpired;
     }
 
-    public Long getReflashTokenExpired() {
-        return reflashTokenExpired;
+    public Long getRefreshTokenExpired() {
+        return refreshTokenExpired;
     }
 
-    public void setReflashTokenExpired(Long reflashTokenExpired) {
-        this.reflashTokenExpired = reflashTokenExpired;
+    public void setRefreshTokenExpired(Long refreshTokenExpired) {
+        this.refreshTokenExpired = refreshTokenExpired;
     }
 
     public Set<String> getRoleIds() {
@@ -86,4 +94,11 @@ public class BaseAuthUser implements UserInfo, Serializable {
         this.type = type;
     }
 
+    public AuthUserInfo() {
+    }
+
+    public AuthUserInfo(String userId, String tenantId) {
+        this.userId = userId;
+        this.tenantId = tenantId;
+    }
 }

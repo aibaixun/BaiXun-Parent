@@ -27,6 +27,11 @@ public class JwtUtil {
     public final static String DEFAULT_TENANT_ID = "tid";
 
 
+    public static final String X_REAL_IP ="X-Real-IP";
+
+    public static final String X_FORWARD_FOR = "X-Forward-For";
+
+
     public static String encode(String secret, long expireTime, String k1, String v1,String k2,String v2) {
         return encode(secret,Map.of(k1,v1,k2,v2),expireTime);
     }

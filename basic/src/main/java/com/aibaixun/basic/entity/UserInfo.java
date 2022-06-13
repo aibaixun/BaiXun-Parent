@@ -7,17 +7,15 @@ package com.aibaixun.basic.entity;
 public interface UserInfo {
 
     /**
-     * 用户id
+     * 获取 用户id
+     * @return String
      */
     String getUserId();
 
     /**
-     * 用户 租户
+     * 用户 租户id
+     * @return String
      */
     String getTenantId();
 
-    /**
-     * 用户名称
-     */
-    String getUserLabel();
 }
