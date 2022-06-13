@@ -1,6 +1,7 @@
 package com.aibaixun.common.filter;
 
 
+import com.aibaixun.basic.jwt.JwtUtil;
 import com.aibaixun.basic.util.StringUtil;
 import com.aibaixun.basic.util.UserSessionUtil;
 import com.aibaixun.common.util.CurrentSafeTicketUtil;
@@ -27,23 +28,21 @@ import java.io.IOException;
 public class AuthenticationFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
 
-    private static final String UID = "uid";
 
-    private static final String X_REAL_IP ="X-Real-IP";
 
-    private static final String X_FORWARD_FOR = "X-Forward-For";
 
     public AuthenticationFilter() {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
-        String uid = request.getHeader(UID);
-        UserSessionUtil.setCurrentSession(uid);
-        if (StringUtil.isEmpty(request.getHeader(X_REAL_IP))) {
-            CurrentSafeTicketUtil.setRealIp(request.getHeader(X_FORWARD_FOR));
+        String uid = request.getHeader(JwtUtil.DEFAULT_USER_ID);
+        String tid = request.getHeader(JwtUtil.DEFAULT_TENANT_ID);
+        UserSessionUtil.setCurrentSession(uid,tid);
+        if (StringUtil.isEmpty(request.getHeader(JwtUtil.X_REAL_IP))) {
+            CurrentSafeTicketUtil.setRealIp(request.getHeader(JwtUtil.X_FORWARD_FOR));
         } else {
-            CurrentSafeTicketUtil.setRealIp(request.getHeader(X_REAL_IP));
+            CurrentSafeTicketUtil.setRealIp(request.getHeader(JwtUtil.X_REAL_IP));
         }
         logger.info("Request Path is: {} from ip: {} by uid:{},startTime is:{}", request.getRequestURI(),CurrentSafeTicketUtil.getRealIp(),uid,System.currentTimeMillis());
         filterChain.doFilter(servletRequest, servletResponse);
