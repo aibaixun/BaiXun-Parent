@@ -1,24 +1,18 @@
 package com.aibaixun.common.autoconfig;
 
-import com.aibaixun.basic.context.UserContextHolder;
 import com.aibaixun.basic.exception.BaseException;
-import com.aibaixun.common.mybatisplus.*;
-import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.baomidou.mybatisplus.core.parser.ISqlParser;
-import com.baomidou.mybatisplus.core.parser.SqlInfo;
+import com.aibaixun.basic.util.UserSessionUtil;
+import com.aibaixun.common.mybatisplus.BxtTenantLineInterceptor;
+import com.aibaixun.common.mybatisplus.MybatisPlusAutoConfigProperties;
+import com.aibaixun.common.mybatisplus.TenantProperties;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.NullValue;
 import net.sf.jsqlparser.expression.StringValue;
 import net.sf.jsqlparser.schema.Column;
-import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -59,7 +53,7 @@ public class MybatisPlusAutoConfigure {
                 @Override
                 public Expression getTenantId() {
                     try {
-                        return new StringValue(UserContextHolder.getTenantId());
+                        return new StringValue(UserSessionUtil.getCurrentSessionTid());
                     } catch (BaseException e) {
                         return new NullValue();
                     }
